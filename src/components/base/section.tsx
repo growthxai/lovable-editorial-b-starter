@@ -1,6 +1,4 @@
 import { cn } from "@/lib/utils";
-import TypographyH2 from "@/components/base/typography/typography-h2";
-import TypographyH3 from "@/components/base/typography/typography-h3";
 
 /* ── Section ──────────────────────────────────────────────────────────
  * Outer <section> wrapper. Full viewport width.
@@ -100,7 +98,6 @@ export const SectionTitle = ({
   align = "center",
   className,
 }: SectionTitleProps) => {
-  const Heading = size === "lg" ? TypographyH2 : TypographyH3;
   return (
     <div
       className={cn(
@@ -109,7 +106,7 @@ export const SectionTitle = ({
         className,
       )}
     >
-      <Heading>{title}</Heading>
+      {size === "lg" ? <h2>{title}</h2> : <h3>{title}</h3>}
       {subtitle && (
         <p
           className={cn(
