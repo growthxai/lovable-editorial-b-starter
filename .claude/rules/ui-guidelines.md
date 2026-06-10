@@ -73,16 +73,16 @@ Use `bg-primary text-primary-foreground` on the section wrapper. Inside, helper 
 
 ### Typography
 
-- **`text-3xl`** for page headings
-- **`text-lg`** for section/card titles
-- **`text-sm` (14px)** — default body text, navigation, table cells, form fields, descriptions
-- `text-base` only in generous-space contexts (modals, full-width content)
+Full reference: `docs/design/typography.md`
+
+Two surfaces, two scales:
+- **Landing / marketing:** use `base/typography/` components (`TypographyH1`–`TypographyH4`). Large, responsive, uses `font-heading`
+- **App / workspace:** use plain elements with utility classes. `text-sm` (13px) is the default. `text-3xl` for page titles, `text-lg` for section titles
+
+Shared rules:
 - `font-semibold` for headings, `font-medium` for labels/emphasis, `font-normal` for body
 - `tabular-nums` on any column of numbers (prices, counts, percentages)
-- `text-balance` on headings — distributes text evenly across lines
-- `text-pretty` on paragraphs — prevents orphaned words on last line
-
-Use `base/typography/` components (`TypographyH1`, `TypographyH2`, etc.) for marketing pages. They encode the heading hierarchy with the active StylePack's font family.
+- `text-balance` on headings, `text-pretty` on paragraphs
 
 ### Icons
 

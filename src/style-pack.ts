@@ -1,32 +1,26 @@
 /**
- * Canonical StylePack for this starter — schema-compatible with Lovable's
- * `defaultStylePacks.ts` (full color token bundle + heading/body font pair).
+ * StylePack type + default pack for the base starter.
  *
- * v1 ships ONE pack ("Mint"), matching what's currently encoded in
- * `src/index.css` and loaded via `index.html`. The actual runtime values
- * live in those two files; this object is the typed canonical reference for:
+ * The type is the contract between the Lovable platform (TDP, codegen,
+ * designer tooling) and the template. Each starter exports one `stylePack`.
  *
- *   - documentation (what tokens / fonts a StylePack carries)
- *   - future pack authoring (copy this shape, swap values, drop in index.css
- *     + index.html, done)
- *   - downstream consumers (Lovable platform, codegen, designer tooling)
+ * Runtime values live in `style-pack.css` (color tokens, font families,
+ * font weights) and `index.html` (font <link> URLs). This TS object is
+ * the typed canonical reference — swap it when forking to a new starter.
  *
- * To swap the pack for a future template:
- *   1. Replace this file's exported `stylePack` content
- *   2. Mirror `colorTokens` into `:root` (and `.dark` if dark-mode applies)
- *      in `src/index.css`
- *   3. Update font `<link>` URLs + `--font-heading` / `--font-body` in
- *      `src/index.css` to match `font.heading.family` / `font.body.family`
+ * Font weights are NOT in this type — they flow through CSS vars
+ * (--font-heading-weight, --font-body-weight) and are overridden at
+ * runtime via the TDP postMessage listener (lovable-customization.js).
  */
-export type StylePack = {
+export interface StylePack {
   label: string;
-  /** A representative hex for the pack — used as a swatch preview chip. */
+  /** Representative hex for swatch preview. */
   previewColor: string;
-  /** 4-color preview row for the pack (used by pack-pickers in tooling). */
+  /** 4-color preview row (used by pack-pickers in tooling). */
   colors: [string, string, string, string];
   /** Full shadcn-compatible token set. Values are complete color strings
-   *  (oklch(...), hsl(...), or hex). Mapped to --color-* CSS variables
-   *  via Lovable's buildStylesheet convention. */
+   *  (oklch(...) or hex). Mapped to bare CSS vars (--background, --primary,
+   *  etc.) which @theme inline resolves to --color-* for Tailwind. */
   colorTokens: {
     primary: string;
     primaryForeground: string;
@@ -56,48 +50,46 @@ export type StylePack = {
     sidebarBorder?: string;
     sidebarRing?: string;
   };
-  /** Heading + body fonts. Loaded via index.html `<link>` tag. */
+  /** Heading + body font families. Loaded via index.html <link> tag. */
   font: {
     heading: { family: string; url: string };
     body: { family: string; url: string };
   };
-};
+}
 
 const figtreeUrl =
   "https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap";
 
 /**
- * The Mint StylePack — starter default.
+ * Neutral — base starter default.
  *
- * Warm stone neutrals + mint primary (#81DE90). Both heading and body use
- * Figtree (single-family pack). Future packs can pair distinct families
- * (e.g. heading "Playfair Display" + body "Inter") with no other code
- * changes — just swap this object + mirror to index.css/index.html.
+ * Slate gray palette, Figtree for both heading and body. Intentionally
+ * plain so forks can define their own identity without fighting defaults.
  */
 export const stylePack: StylePack = {
-  label: "Mint",
-  previewColor: "#81DE90",
-  colors: ["#81DE90", "#F5F5EF", "#F0EFEA", "#1A1714"],
+  label: "Neutral",
+  previewColor: "#1a1a1a",
+  colors: ["#1a1a1a", "#fafafa", "#f5f5f5", "#737373"],
   colorTokens: {
-    primary: "oklch(82.34% 0.1385 148.16)",
-    primaryForeground: "oklch(26.20% 0.0487 147.82)",
-    background: "oklch(98.59% 0.0012 106.42)",
-    foreground: "oklch(21.61% 0.0062 56.04)",
-    secondary: "oklch(97.08% 0.0014 106.42)",
-    secondaryForeground: "oklch(27.04% 0.0089 55.98)",
-    accent: "oklch(97.08% 0.0014 106.42)",
-    accentForeground: "oklch(27.04% 0.0089 55.98)",
-    muted: "oklch(97.08% 0.0014 106.42)",
-    mutedForeground: "oklch(55.59% 0.0111 58.09)",
-    card: "oklch(100.00% 0.0000 89.88)",
-    cardForeground: "oklch(21.61% 0.0062 56.04)",
-    popover: "oklch(100.00% 0.0000 89.88)",
-    popoverForeground: "oklch(21.61% 0.0062 56.04)",
-    destructive: "oklch(57.86% 0.2137 27.17)",
-    destructiveForeground: "oklch(100.00% 0.0000 89.88)",
-    border: "oklch(92.42% 0.0027 67.79)",
-    input: "oklch(92.42% 0.0027 67.79)",
-    ring: "oklch(82.34% 0.1385 148.16)",
+    primary: "oklch(0.205 0.029 264.7)",
+    primaryForeground: "oklch(0.985 0 0)",
+    background: "oklch(1 0 0)",
+    foreground: "oklch(0.145 0 0)",
+    secondary: "oklch(0.97 0 0)",
+    secondaryForeground: "oklch(0.205 0.029 264.7)",
+    accent: "oklch(0.97 0 0)",
+    accentForeground: "oklch(0.205 0.029 264.7)",
+    muted: "oklch(0.97 0 0)",
+    mutedForeground: "oklch(0.556 0.016 264.7)",
+    card: "oklch(1 0 0)",
+    cardForeground: "oklch(0.145 0 0)",
+    popover: "oklch(1 0 0)",
+    popoverForeground: "oklch(0.145 0 0)",
+    destructive: "oklch(0.577 0.245 27.325)",
+    destructiveForeground: "oklch(0.985 0 0)",
+    border: "oklch(0.922 0 0)",
+    input: "oklch(0.922 0 0)",
+    ring: "oklch(0.708 0.028 264.7)",
   },
   font: {
     heading: { family: "Figtree", url: figtreeUrl },
