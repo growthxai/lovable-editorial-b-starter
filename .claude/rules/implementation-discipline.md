@@ -8,7 +8,7 @@ paths:
 
 ## When implementing code changes
 
-- **Restate which screen you're implementing before each file change.** Example: "Screen 2 (Dashboard) — building `pages/dashboard/components/ticket-queue.tsx`". If you can't name the screen, you don't know what you're doing yet.
+- **Restate which screen you're implementing before each file change.** Example: "Screen 2 (Workspace) — building `pages/workspace/components/sidebar-nav.tsx`". If you can't name the screen, you don't know what you're doing yet.
 - **Do not expand scope.** Implement what the spec describes, not what you think would be cool.
 - **Do not refactor unrelated code.** If a file doesn't need to change for THIS screen, leave it untouched.
 - **Keep diffs minimal.** Smallest correct change. Don't reformat files, rename variables, or "improve" things outside the screen you're working on.

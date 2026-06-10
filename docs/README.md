@@ -15,8 +15,9 @@ Pipeline outputs and implementation artifacts. One set per template build:
 Design reference docs. Supplements `.claude/rules/ui-guidelines.md` with
 longer-form guidance:
 
-- `copywriting.md` — voice, tone, copy rules
-- `blankslates.md` — empty state patterns
+- `typography.md` — Geist type scale, landing vs app/workspace usage, font slots
+- `copywriting.md` — voice, tone, copy rules (add when needed)
+- `blankslates.md` — empty state patterns (add when needed)
 
 New folders (`architecture/`, `reference/`, `runbooks/`) appear when needed.
 Don't create them speculatively.

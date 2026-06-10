@@ -27,19 +27,18 @@ src/
 │   ├── landing/
 │   │   ├── index.tsx
 │   │   └── components/
-│   ├── dashboard/
+│   ├── app/
 │   │   ├── index.tsx
 │   │   └── components/
-│   ├── chat/
+│   ├── workspace/
 │   │   ├── index.tsx
 │   │   └── components/
-│   ├── search/
-│   │   └── index.tsx
 │   └── not-found.tsx
 ├── layouts/                   # Page shells — <Outlet /> wrappers for App.tsx
-│   └── app-layout.tsx
+│   ├── application-layout.tsx # Fullscreen — no chrome (landing, auth, onboarding)
+│   └── workspace-layout.tsx   # Sidebar + content inset (dashboards, chat, admin)
 ├── components/
-│   ├── base/                  # Sacred — generality test (logo, section, typography)
+│   ├── base/                  # Sacred — generality test (typography, section, sidebar)
 │   ├── ai-elements/           # Sacred — AI SDK components (don't modify)
 │   └── ui/                    # Sacred — shadcn (don't modify, except button variants after fork)
 ├── data/                      # Seed fixtures (seed.ts)
@@ -98,3 +97,7 @@ Detailed patterns and conventions:
 - `.claude/rules/react-patterns.md` — component hierarchy, extraction flow, shadcn usage
 - `.claude/rules/ui-guidelines.md` — OKLCH tokens, typography, semantic colors, visual philosophy
 - `.claude/rules/implementation-discipline.md` — build loop, verification, SPEC-GAP
+
+## Design references
+
+- `docs/design/typography.md` — Geist type scale, landing vs app/workspace usage

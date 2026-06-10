@@ -38,17 +38,13 @@ Frontend is organized by pages. Each page is a self-contained folder:
 
 ```
 src/pages/
-├── dashboard/
+├── landing/
 │   ├── index.tsx            # Route entry — thin, composes components
 │   └── components/          # Components ONLY for this page
-│       ├── ticket-queue.tsx
-│       └── csat-chart.tsx
-├── chat/
+├── app/
 │   ├── index.tsx
 │   └── components/
-│       ├── thread.tsx
-│       └── composer.tsx
-└── landing/
+└── workspace/
     ├── index.tsx
     └── components/
 ```
@@ -98,10 +94,13 @@ export function DataList<T>({ items, renderItem }: DataListProps<T>) {
 Layouts live in `src/layouts/` and wrap pages via React Router's `<Outlet />`:
 
 ```tsx
-// App.tsx
-<Route element={<AppLayout />}>
-  <Route path="/chat" element={<Chat />} />
-  <Route path="/dashboard" element={<Dashboard />} />
+// App.tsx — two layout shells
+<Route element={<ApplicationLayout />}>
+  <Route path="/" element={<Landing />} />
+  <Route path="/app" element={<AppPage />} />
+</Route>
+<Route element={<WorkspaceLayout />}>
+  <Route path="/workspace" element={<Workspace />} />
 </Route>
 ```
 
@@ -300,7 +299,7 @@ text-gray-700    → text-foreground
 bg-[#1a1a1a]     → bg-background
 ```
 
-Full styling rules: `.claude/rules/styling-patterns.md`
+Full styling rules: `.claude/rules/ui-guidelines.md`
 
 ---
 
