@@ -163,7 +163,7 @@ export function PartnerLogoGrid({
             src={logo.src}
             alt={logo.alt}
             loading="lazy"
-            className="max-h-6 max-w-[7.5rem] grayscale"
+            className="max-h-4 max-w-[7.5rem] grayscale"
           />
         </li>
       ))}
