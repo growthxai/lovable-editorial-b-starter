@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "./base.css";
-
 /* ── Neutral defaults (slate, OKLCH) ──────────────────────────────────
  * Base values. style-pack.css overrides these with the active pack's
  * tokens. Tailwind config maps --color-* vars to utility classes.

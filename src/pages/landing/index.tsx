@@ -1,10 +1,15 @@
+import { TextRotator } from "./components/text-rotator";
+
 export default function Landing() {
   return (
-    <div className="flex min-h-screen items-center justify-center">
-      <div className="text-center">
-        <h1 className="text-3xl font-semibold tracking-tight">Landing</h1>
-        <p className="mt-2 text-sm text-muted-foreground">Marketing surface — application layout</p>
-      </div>
+    <div className="landing flex min-h-screen flex-col items-center justify-center text-center">
+      <h1 className="display">
+        <TextRotator
+          words="Real work,Advanced analysis,Repetitive tasks,Deep research,Meeting prep,Data insights"
+          speed={1200}
+        />
+        ,{"\n"}done with&nbsp;AI
+      </h1>
     </div>
   );
 }

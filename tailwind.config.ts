@@ -105,6 +105,9 @@ export default {
   		]
   	},
   	extend: {
+  		maxWidth: {
+  			'page': '1440px',
+  		},
   		fontFamily: {
   			sans: [
   				'var(--font-body)',

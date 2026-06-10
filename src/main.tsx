@@ -1,6 +1,7 @@
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
+import "./base.css";
 import "./style-pack.css";
 
 const theme = localStorage.getItem("theme") ?? "system";
