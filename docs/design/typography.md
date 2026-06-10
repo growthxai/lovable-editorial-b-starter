@@ -1,10 +1,10 @@
 # Typography
 
-Two surfaces, two scales. The Geist type scale (defined in `index.css` `@theme inline`) is the shared foundation. This guide says which sizes to use where.
+Two surfaces, two scales. The type scale (defined in `index.css` `@theme inline`) is the shared foundation. This guide says which sizes to use where.
 
 ---
 
-## Type scale (Geist)
+## Type scale
 
 Constant across all style packs and surfaces. Sizes `3xl`+ carry negative letter-spacing (heading territory). `xs`–`2xl` have none (body/label territory).
 

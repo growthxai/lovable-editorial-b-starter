@@ -100,4 +100,4 @@ Detailed patterns and conventions:
 
 ## Design references
 
-- `docs/design/typography.md` — Geist type scale, landing vs app/workspace usage
+- `docs/design/typography.md` — type scale, landing vs app/workspace usage

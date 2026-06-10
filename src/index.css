@@ -35,7 +35,7 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
-  /* Geist type scale — constant across all style packs */
+  /* Type scale — constant across all style packs */
   --text-xs: 12px;
   --text-xs--line-height: 16px;
   --text-sm: 13px;
