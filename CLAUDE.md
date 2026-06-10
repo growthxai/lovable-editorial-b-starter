@@ -1,0 +1,100 @@
+# Claude Development Guide
+
+**Philosophy:** Adapt the starter to a new template spec by reusing existing
+components. Build into page folders, not from scratch.
+
+## Core Principles
+
+- **Pages own their components** — every page is a folder with `index.tsx` + `components/`. Build here first. Extract to `components/` only on the 3rd use
+- **Three sacred folders** — `components/ui/` (shadcn), `components/base/` (design-system primitives), and `components/ai-elements/` (AI SDK) must not be modified. Use them, don't edit them
+- **`ui/` exception for forks** — after forking the base starter, a template MAY add custom button variants/sizes to `ui/button.tsx` if the template's UX requires it (e.g. `ghost-muted`, `sm-flush`). This is the ONLY sanctioned `ui/` modification. All other `ui/` files stay untouched
+- **`components/base/` generality test** — would another product use this component? Yes → base. No → page folder. Adding to base is a red flag
+- **Reuse before rebuild** — read the page's existing code before creating new files. Adapt what exists
+- **Real data, never placeholders** — verbatim strings from the spec. No lorem ipsum. Seed fixtures in `data/seed.ts`
+- **One screen at a time** — implement, `npm run build`, verify, commit. Don't batch multiple screens
+- **TypeScript strict** — no `any`, interfaces for props
+- **Smallest correct change** — don't refactor unrelated code, don't add features the spec didn't ask for
+
+**Stack:** Vite + React 18 + TypeScript + Tailwind CSS v4 + shadcn/ui
+
+---
+
+## Project Structure
+
+```
+src/
+├── pages/                     # Route-level modules — each owns its components/
+│   ├── landing/
+│   │   ├── index.tsx
+│   │   └── components/
+│   ├── dashboard/
+│   │   ├── index.tsx
+│   │   └── components/
+│   ├── chat/
+│   │   ├── index.tsx
+│   │   └── components/
+│   ├── search/
+│   │   └── index.tsx
+│   └── not-found.tsx
+├── layouts/                   # Page shells — <Outlet /> wrappers for App.tsx
+│   └── app-layout.tsx
+├── components/
+│   ├── base/                  # Sacred — generality test (logo, section, typography)
+│   ├── ai-elements/           # Sacred — AI SDK components (don't modify)
+│   └── ui/                    # Sacred — shadcn (don't modify, except button variants after fork)
+├── data/                      # Seed fixtures (seed.ts)
+└── lib/                       # Hooks, providers, utils
+```
+
+---
+
+## Component Hierarchy
+
+```
+pages/<name>/components/    ← build here first (page-scoped)
+         ↓ 3rd use
+components/                 ← shared across pages (domain-specific OK)
+         ↓ generality test
+components/base/            ← primitives another product could use
+```
+
+Never skip levels. Never put domain components in `base/`.
+
+---
+
+## Don'ts
+
+1. Don't modify `components/ui/`, `components/base/`, or `components/ai-elements/` (see button exception above)
+2. Don't `npm install` packages — use `npx shadcn@latest add` for UI components
+3. Don't build raw HTML when shadcn has the component
+4. Don't use emojis as JSX content — use Lucide React icons
+5. Don't use hardcoded hex colors — use design tokens (`text-foreground`, `bg-primary`)
+6. Don't create new top-level `src/` folders
+7. Don't skip `npm run build` between screens
+
+---
+
+## Environment
+
+**Package Manager:** npm (this repo uses `package-lock.json`)
+
+```bash
+npm install          # Install dependencies
+npm run dev          # Start dev server
+npm run build        # Type-check + build
+```
+
+**Adding shadcn components:**
+
+```bash
+npx shadcn@latest add <component>     # Installs to components/ui/
+```
+
+---
+
+## Rules
+
+Detailed patterns and conventions:
+- `.claude/rules/react-patterns.md` — component hierarchy, extraction flow, shadcn usage
+- `.claude/rules/ui-guidelines.md` — OKLCH tokens, typography, semantic colors, visual philosophy
+- `.claude/rules/implementation-discipline.md` — build loop, verification, SPEC-GAP

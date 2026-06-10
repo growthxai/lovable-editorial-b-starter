@@ -1,0 +1,171 @@
+---
+description: Implementation workflow, build-fix loop, verification report — applies to all coding work
+paths:
+  - 'src/**'
+---
+
+# Implementation Discipline
+
+## When implementing code changes
+
+- **Restate which screen you're implementing before each file change.** Example: "Screen 2 (Dashboard) — building `pages/dashboard/components/ticket-queue.tsx`". If you can't name the screen, you don't know what you're doing yet.
+- **Do not expand scope.** Implement what the spec describes, not what you think would be cool.
+- **Do not refactor unrelated code.** If a file doesn't need to change for THIS screen, leave it untouched.
+- **Keep diffs minimal.** Smallest correct change. Don't reformat files, rename variables, or "improve" things outside the screen you're working on.
+- **If you discover something the spec missed:** add a `// SPEC-GAP: <what's missing>` comment at the point of compromise, choose a sensible default, continue. Document it in VERIFICATION.md. Do NOT stop to ask.
+
+---
+
+## Per-Screen Loop (mandatory — one screen at a time)
+
+For each screen in the plan's Screen List, in order:
+
+### 1. Read
+
+Re-read the spec entries for THIS screen before writing any code:
+- **Screenboard** — the wireframe, section breakdowns, mock data, states
+- **Storyboard** — frames that start or end at this screen (transitions, copy)
+- **Breadboard** — arrows leaving this screen (navigation targets)
+
+### 2. Build
+
+- Build components in `pages/<screen>/components/` — not in the page file
+- Use real data from `data/seed.ts` — verbatim strings from the spec
+- Import from `components/base/`, `components/ui/`, `components/ai-elements/` as needed — don't modify them
+
+### 3. Verify
+
+Run `npm run build` immediately. Don't batch multiple screens before building.
+
+- **If the build fails:** read the full error, diagnose the root cause, fix it, re-run. Do NOT move on until the build passes.
+- **If the build passes:** proceed to QA.
+
+### 4. QA against the spec
+
+Check this screen against its screenboard entry:
+- Does the layout match the wireframe? (sections, components, hierarchy)
+- Are all elements from the wireframe present?
+- Are there extra elements NOT in the wireframe? Remove them.
+- Does the copy match the storyboard's "Copy in this frame" entries?
+- Do navigation arrows from the breadboard work? (click trigger → correct destination)
+
+### 5. Fix
+
+Up to 3 fix cycles for mismatches found in QA. After 3 attempts on the same issue, add a `// SPEC-GAP:` comment and move on.
+
+### 6. Commit
+
+```bash
+git commit -m "feat(<screen>): implement <ScreenName> per spec"
+```
+
+Only commit once QA passes (or after 3 fix cycles with gaps documented).
+
+**Then start the loop again for the next screen.**
+
+---
+
+## Before the first screen
+
+1. Write `docs/plans/IMPLEMENTATION_MAP.md` — map each screen to existing components:
+   - **Reuse as-is** — existing component fits
+   - **Reuse + swap content** — structure stays, data changes
+   - **Adapt pattern** — keep mechanics, swap subject
+   - **New component** — last resort, justify why nothing fits
+
+2. Commit the map FIRST:
+   ```bash
+   git commit -m "docs: implementation map for <Template>"
+   ```
+
+3. Apply the theme tint — update `src/index.css` primary color values
+
+4. Start the dev server: `npm run dev`
+
+---
+
+## After all screens — Verification Report
+
+Write `docs/plans/VERIFICATION.md` with this structure:
+
+```markdown
+# Verification — <TemplateName>
+
+## Summary
+What was implemented. What was intentionally not changed.
+
+## Files changed
+
+| File | Reason | Change summary |
+|---|---|---|
+
+## Acceptance criteria
+
+One entry per screen. Derived from the screenboard wireframes.
+
+| AC | Screen | Status | Evidence |
+|---|---|---|---|
+
+Status must be **PASS, FAIL, or NOT PROVEN**. Never claim PASS without
+evidence — `npm run build` clean, file:line reference, or "compiles, not
+visually verified" are all acceptable.
+
+## Build verifications
+
+| Build command | Result |
+|---|---|
+
+## SPEC-GAPs surfaced
+
+List every `// SPEC-GAP:` comment in the code:
+
+- `<file:line>` — what's missing, what default was used, what a human should decide
+
+## Risks / not proven
+
+Honest list. Say NOT PROVEN — never claim unverified success.
+
+## High-risk files requiring review
+
+| File | Risk | Why it needs review |
+|---|---|---|
+
+Rate each: LOW, MEDIUM, HIGH. Only MEDIUM and HIGH listed.
+```
+
+---
+
+## Commit cadence
+
+Small semantic commits. One per screen, plus bookends:
+
+```bash
+# Before any code:
+git commit -m "docs: implementation map for <Template>"
+
+# Per screen, after QA passes:
+git commit -m "feat(landing): implement Landing per spec"
+git commit -m "feat(dashboard): implement Dashboard per spec"
+git commit -m "feat(chat): implement Chat per spec"
+
+# After all screens:
+git commit -m "docs: verification report for <Template>"
+
+# Final:
+git commit -m "feat: implement <Template> per spec"
+```
+
+**Why per-screen:** if a screen breaks the build, previous screens are still recoverable.
+
+---
+
+## Anti-patterns from past builds
+
+1. ❌ Building all components inline in the page file. ✅ Build in `pages/<name>/components/`
+2. ❌ Implementing all screens before running `npm run build`. ✅ Build after every screen
+3. ❌ Skipping QA — "it compiles so it's done." ✅ Check against the screenboard wireframe
+4. ❌ One monolithic commit at the end. ✅ Per-screen commits
+5. ❌ Refactoring unrelated files mid-build. ✅ Smallest correct change
+6. ❌ Claiming all ACs PASS without evidence. ✅ Mark NOT PROVEN honestly
+7. ❌ Stopping mid-build to ask a question. ✅ SPEC-GAP comment, sensible default, move on
+8. ❌ Reading the spec once at the start and forgetting by screen 3. ✅ Re-read per screen

@@ -1,0 +1,44 @@
+/* StylePack — overrides neutral defaults from `index.css`.
+ *
+ * Token values are full OKLCH color strings. The @theme inline block in
+ * index.css maps these bare vars (--background, --primary, etc.) to
+ * Tailwind's --color-* namespace (--color-background, --color-primary).
+ *
+ * Imported by `src/main.tsx` AFTER `index.css` so these values win.
+ *
+ * To swap the pack: replace values here + update font links in index.html.
+ */
+
+:root {
+  /* Font families — swapped per style pack */
+  --font-heading: "Figtree", sans-serif;
+  --font-body: "Figtree", sans-serif;
+
+  /* Font weight defaults — overridable via TDP postMessage */
+  --font-heading-weight: 600;
+  --font-body-weight: 400;
+}
+
+/* ── Body font (StylePack-aware) ─────────────────────────────── */
+
+body {
+  font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
+  font-weight: var(--font-body-weight);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--font-heading-weight);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
