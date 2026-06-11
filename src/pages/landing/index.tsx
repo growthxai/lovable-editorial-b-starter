@@ -1,7 +1,6 @@
 import { Header01 } from "./components/header";
 import { Hero } from "./components/hero";
 import { FeatureShowcase, type Feature } from "./components/feature-showcase";
-import { FeatureShowcase02 } from "./components/feature-showcase-02";
 import { Testimonial01 } from "./components/testimonial-01";
 import { AutomateMockup, AnalyzeMockup, ActMockup } from "./components/mockups";
 import { Button } from "@/components/base/button";
@@ -35,10 +34,6 @@ export default function Landing() {
       <Hero />
       <div id="features">
         <FeatureShowcase
-          features={features}
-          backgroundImage="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80"
-        />
-        <FeatureShowcase02
           features={features}
           backgroundImage="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80"
         />
