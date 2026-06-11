@@ -13,7 +13,7 @@ components. Build into page folders, not from scratch.
 - **TypeScript strict** — no `any`, interfaces for props
 - **Smallest correct change** — don't refactor unrelated code, don't add features the spec didn't ask for
 
-**Stack:** Vite + React 18 + TypeScript + Tailwind CSS v3 + shadcn/ui
+**Stack:** Vite + React 18 + TypeScript + Tailwind CSS v3 + shadcn/ui + Recharts + Tabler Icons + AI Elements
 
 ---
 
