@@ -1,4 +1,4 @@
-import { ChevronsLeft } from "lucide-react";
+import { IconChevronsLeft } from "@tabler/icons-react";
 import {
   Sidebar,
   SidebarContent,
@@ -25,7 +25,7 @@ export function PeekPaneBody() {
               className="hidden w-fit opacity-0 pointer-events-none group-hover/sidebar-pane:opacity-100 group-hover/sidebar-pane:pointer-events-auto transition-opacity duration-200 md:flex"
               onClick={() => actions.collapse("unpin")}
             >
-              <ChevronsLeft />
+              <IconChevronsLeft />
             </SidebarMenuButton>
           )}
           <SidebarMenuButton
@@ -33,7 +33,7 @@ export function PeekPaneBody() {
             className="w-fit md:hidden"
             onClick={() => setOpenMobile(false)}
           >
-            <ChevronsLeft />
+            <IconChevronsLeft />
           </SidebarMenuButton>
         </div>
       </SidebarHeader>

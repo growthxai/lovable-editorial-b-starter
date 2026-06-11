@@ -88,7 +88,7 @@ Shared rules:
 
 ### Icons
 
-- **Lucide React only** — never emojis as JSX text content
+- **Tabler Icons React** (`@tabler/icons-react`) — never emojis as JSX text content. Use `type Icon` for icon prop types.
 - Default size: `size-4` (16px). Button component auto-sizes unsized SVGs
 - **Icons match the text they sit beside** — if label is `text-foreground`, icon is too
 - **Anti-pattern: gray-on-gray** — never `text-muted-foreground` on `bg-muted` containers. Use `text-foreground` instead

@@ -2,20 +2,20 @@ import { Outlet, Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import {
-  Home,
-  FolderOpen,
-  Settings,
-  BarChart3,
-  PanelLeft,
-  ChevronRight,
-} from "lucide-react";
+  IconHome,
+  IconFolder,
+  IconSettings,
+  IconChartBar,
+  IconLayoutSidebar,
+  IconChevronRight,
+} from "@tabler/icons-react";
 import { Button } from "@/components/ui/button";
 
 const navItems = [
-  { label: "Home", href: "/workspace-03", icon: Home },
-  { label: "Projects", href: "/workspace-03/projects", icon: FolderOpen },
-  { label: "Analytics", href: "/workspace-03/analytics", icon: BarChart3 },
-  { label: "Settings", href: "/workspace-03/settings", icon: Settings },
+  { label: "Home", href: "/workspace-03", icon: IconHome },
+  { label: "Projects", href: "/workspace-03/projects", icon: IconFolder },
+  { label: "Analytics", href: "/workspace-03/analytics", icon: IconChartBar },
+  { label: "Settings", href: "/workspace-03/settings", icon: IconSettings },
 ];
 
 export default function WorkspaceLayout03() {
@@ -72,11 +72,11 @@ export default function WorkspaceLayout03() {
               className="size-8"
               onClick={() => setSidebarOpen((o) => !o)}
             >
-              <PanelLeft className="size-4" />
+              <IconLayoutSidebar className="size-4" />
             </Button>
             <nav className="flex items-center gap-1 text-sm">
               <span className="text-muted-foreground">Workspace</span>
-              <ChevronRight className="size-3 text-muted-foreground" />
+              <IconChevronRight className="size-3 text-muted-foreground" />
               <span className="font-medium text-foreground">{activeItem.label}</span>
             </nav>
           </div>

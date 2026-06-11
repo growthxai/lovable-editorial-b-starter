@@ -1,4 +1,4 @@
-import { AlignLeft } from "lucide-react";
+import { IconMenu2 } from "@tabler/icons-react";
 import {
   SidebarMenuButton,
   SidebarHoverArea,
@@ -15,7 +15,7 @@ function Header() {
       {!state.isExpanded && (
         <SidebarHoverArea className="hidden md:block">
           <SidebarMenuButton size="sm" onClick={() => actions.expand("hamburger")}>
-            <AlignLeft />
+            <IconMenu2 />
           </SidebarMenuButton>
         </SidebarHoverArea>
       )}
@@ -24,7 +24,7 @@ function Header() {
         className="md:hidden"
         onClick={() => setOpenMobile(true)}
       >
-        <AlignLeft />
+        <IconMenu2 />
       </SidebarMenuButton>
       <span className="text-sm font-medium">Home</span>
     </header>

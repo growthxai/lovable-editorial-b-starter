@@ -1,12 +1,12 @@
 import { type ReactNode, type ElementType } from "react";
 import {
-  CloudUpload,
-  Lock,
-  RefreshCw,
-  Fingerprint,
-  Settings,
-  Database,
-} from "lucide-react";
+  IconCloudUpload,
+  IconLock,
+  IconRefresh,
+  IconFingerprint,
+  IconSettings,
+  IconDatabase,
+} from "@tabler/icons-react";
 
 interface FeatureItem {
   name: string;
@@ -26,32 +26,32 @@ const defaultFeatures: FeatureItem[] = [
   {
     name: "Push to deploy.",
     description: "Commit your changes and watch them go live in seconds. No build steps, no waiting.",
-    icon: CloudUpload,
+    icon: IconCloudUpload,
   },
   {
     name: "SSL certificates.",
     description: "Every deployment gets HTTPS by default. Zero configuration, always encrypted.",
-    icon: Lock,
+    icon: IconLock,
   },
   {
     name: "Simple queues.",
     description: "Process background jobs reliably without managing infrastructure.",
-    icon: RefreshCw,
+    icon: IconRefresh,
   },
   {
     name: "Advanced security.",
     description: "Role-based access, audit logs, and SSO built into every plan.",
-    icon: Fingerprint,
+    icon: IconFingerprint,
   },
   {
     name: "Powerful API.",
     description: "RESTful endpoints for everything. Automate your entire workflow programmatically.",
-    icon: Settings,
+    icon: IconSettings,
   },
   {
     name: "Database backups.",
     description: "Automatic daily snapshots with one-click restore. Never lose a byte.",
-    icon: Database,
+    icon: IconDatabase,
   },
 ];
 

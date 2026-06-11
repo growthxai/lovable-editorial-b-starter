@@ -1,5 +1,5 @@
 import { type ReactNode } from "react";
-import { ChevronRight } from "lucide-react";
+import { IconChevronRight } from "@tabler/icons-react";
 import { Button } from "@/components/base/button";
 
 interface Hero04Props {
@@ -32,7 +32,7 @@ export function Hero04({
                 </span>
                 <span className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground">
                   <span>{badge.announcement}</span>
-                  <ChevronRight className="size-4 text-muted-foreground" />
+                  <IconChevronRight className="size-4 text-muted-foreground" />
                 </span>
               </a>
             </div>

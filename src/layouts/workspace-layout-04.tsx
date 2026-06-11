@@ -1,18 +1,18 @@
 import { Outlet, Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
-import { Home, FolderOpen, BarChart3, Users, Settings, Bell, type LucideIcon } from "lucide-react";
+import { IconHome, IconFolder, IconChartBar, IconUsers, IconSettings, IconBell, type Icon } from "@tabler/icons-react";
 
 interface Tab {
   label: string;
   href: string;
-  icon: LucideIcon;
+  icon: Icon;
 }
 
 const tabs: Tab[] = [
-  { label: "Home", href: "/workspace-04", icon: Home },
-  { label: "Projects", href: "/workspace-04/projects", icon: FolderOpen },
-  { label: "Analytics", href: "/workspace-04/analytics", icon: BarChart3 },
-  { label: "People", href: "/workspace-04/people", icon: Users },
+  { label: "Home", href: "/workspace-04", icon: IconHome },
+  { label: "Projects", href: "/workspace-04/projects", icon: IconFolder },
+  { label: "Analytics", href: "/workspace-04/analytics", icon: IconChartBar },
+  { label: "People", href: "/workspace-04/people", icon: IconUsers },
 ];
 
 export default function WorkspaceLayout04() {
@@ -55,8 +55,8 @@ export default function WorkspaceLayout04() {
 
         {/* Right — actions + avatar */}
         <div className="flex items-center gap-4">
-          <Bell className="size-4 text-muted-foreground" />
-          <Settings className="size-4 text-muted-foreground" />
+          <IconBell className="size-4 text-muted-foreground" />
+          <IconSettings className="size-4 text-muted-foreground" />
           <div className="size-7 rounded-full bg-muted" />
         </div>
       </header>

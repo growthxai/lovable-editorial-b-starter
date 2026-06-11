@@ -1,17 +1,17 @@
 import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
-import { Home, FolderOpen, Settings, type LucideIcon } from "lucide-react";
+import { IconHome, IconFolder, IconSettings, type Icon } from "@tabler/icons-react";
 
 interface Tab {
   label: string;
   href: string;
-  icon: LucideIcon;
+  icon: Icon;
 }
 
 const defaultTabs: Tab[] = [
-  { label: "Home", href: "/workspace-02", icon: Home },
-  { label: "Projects", href: "/workspace-02/projects", icon: FolderOpen },
-  { label: "Settings", href: "/workspace-02/settings", icon: Settings },
+  { label: "Home", href: "/workspace-02", icon: IconHome },
+  { label: "Projects", href: "/workspace-02/projects", icon: IconFolder },
+  { label: "Settings", href: "/workspace-02/settings", icon: IconSettings },
 ];
 
 interface WorkspaceTopBar02Props {

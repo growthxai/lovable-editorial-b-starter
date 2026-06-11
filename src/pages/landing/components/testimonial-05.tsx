@@ -1,4 +1,4 @@
-import { Star } from "lucide-react";
+import { IconStarFilled } from "@tabler/icons-react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 interface Testimonial05Props {
@@ -23,7 +23,7 @@ export function Testimonial05({
       <figure className="mx-auto max-w-2xl px-6 lg:px-8">
         <div className="flex gap-1 text-primary">
           {Array.from({ length: stars }, (_, i) => (
-            <Star key={i} className="size-4 fill-current" />
+            <IconStarFilled key={i} className="size-4" />
           ))}
         </div>
         <blockquote className="mt-10 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
