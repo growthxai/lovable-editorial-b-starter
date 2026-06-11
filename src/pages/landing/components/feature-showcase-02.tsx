@@ -154,7 +154,7 @@ export function FeatureShowcase02({ features, backgroundImage }: FeatureShowcase
               className="col-span-9 flex items-center"
               style={{ filter: "drop-shadow(0px 9px 28px color-mix(in oklch, var(--color-primary) 10%, transparent))" }}
             >
-              <figure className="relative w-full overflow-hidden rounded-lg">
+              <figure className="relative w-full overflow-hidden rounded-xl ring-1 ring-border shadow-2xl">
                 <img
                   src="/browser-chrome.svg"
                   alt=""
@@ -212,7 +212,7 @@ export function FeatureShowcase02({ features, backgroundImage }: FeatureShowcase
 
             {/* Mockup */}
             <div style={{ filter: "drop-shadow(0px 9px 28px color-mix(in oklch, var(--color-primary) 10%, transparent))" }}>
-            <figure className="relative w-full overflow-hidden rounded-lg">
+            <figure className="relative w-full overflow-hidden rounded-xl ring-1 ring-border shadow-2xl">
               <img
                 src="/browser-chrome.svg"
                 alt=""

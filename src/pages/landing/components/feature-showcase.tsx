@@ -157,7 +157,7 @@ export function FeatureShowcase({
                 className={cn(i === activeIndex ? "block" : "hidden")}
               >
                 <h2 className="mb-6 text-center text-white">{feature.heading}</h2>
-                <figure className="relative overflow-hidden rounded-lg">
+                <figure className="relative overflow-hidden rounded-xl ring-1 ring-border shadow-2xl">
                   <img
                     src="/browser-chrome.svg"
                     alt=""

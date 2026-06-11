@@ -69,7 +69,9 @@ Vercel/V0 aesthetic: minimal, monochromatic, content-first. Built on **shadcn** 
 
 ### Dark sections (landing page)
 
-Use `bg-primary text-primary-foreground` on the section wrapper. Inside, helper text uses `text-primary-foreground/60` (60% opacity). Never hardcoded grays inside dark sections.
+Use `bg-foreground` or `bg-primary` on the section wrapper with `text-white` for content. Helper text uses `text-white/60` (60% opacity).
+
+**TW3 OKLCH limitation:** the `/xx` opacity modifier only works on standard Tailwind colors (`white`, `black`). It does NOT work on custom OKLCH tokens (`text-primary-foreground/60` renders transparent). Always use `text-white/60`, `bg-black/10`, etc. — never `text-foreground/60` or `text-primary-foreground/60`.
 
 ### Typography
 
