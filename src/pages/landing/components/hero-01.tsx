@@ -4,7 +4,7 @@ import { TextRotator } from "./text-rotator";
 import { PartnerLogoGrid } from "./partner-logo-grid";
 import { heroWords, partnerLogos } from "@/data/landing";
 
-export function Hero() {
+export function Hero01() {
   return (
     <section className="landing py-24">
       <div className="mx-auto max-w-page px-6 lg:px-8">

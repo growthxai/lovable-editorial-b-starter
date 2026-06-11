@@ -34,9 +34,12 @@ src/
 │   │   ├── index.tsx
 │   │   └── components/
 │   └── not-found.tsx
-├── layouts/                   # Page shells — <Outlet /> wrappers for App.tsx
-│   ├── application-layout.tsx # Fullscreen — no chrome (landing, auth, onboarding)
-│   └── workspace-layout.tsx   # Sidebar + content inset (dashboards, chat, admin)
+├── layouts/                        # Page shells — <Outlet /> wrappers for App.tsx
+│   ├── application-layout.tsx      # Fullscreen — no chrome (landing, auth, onboarding)
+│   ├── workspace-layout-01.tsx     # Peekable sidebar
+│   ├── workspace-layout-02.tsx     # Top-bar (pill tabs) + inset sheet
+│   ├── workspace-layout-03.tsx     # Standard sidebar + inset card + breadcrumbs
+│   └── workspace-layout-04.tsx     # Icon tab header + muted page bg
 ├── components/
 │   ├── base/                  # Sacred — generality test (typography, section, sidebar)
 │   ├── ai-elements/           # Sacred — AI SDK components (don't modify)

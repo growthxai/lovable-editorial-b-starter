@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ApplicationLayout from "./layouts/application-layout";
-import WorkspaceLayout from "./layouts/workspace-layout";
+import WorkspaceLayout01 from "./layouts/workspace-layout-01";
 import Landing from "./pages/landing";
 import AppPage from "./pages/app";
 import Workspace from "./pages/workspace";
@@ -13,7 +13,7 @@ const App = () => (
         <Route path="/" element={<Landing />} />
         <Route path="/app" element={<AppPage />} />
       </Route>
-      <Route element={<WorkspaceLayout />}>
+      <Route element={<WorkspaceLayout01 />}>
         <Route path="/workspace" element={<Workspace />} />
       </Route>
       <Route path="*" element={<NotFound />} />

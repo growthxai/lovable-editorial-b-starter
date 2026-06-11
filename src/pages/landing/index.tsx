@@ -1,10 +1,10 @@
 import { Header01 } from "./components/header";
-import { Hero } from "./components/hero";
+import { Hero01 } from "./components/hero-01";
 import { Hero02 } from "./components/hero-02";
 import { Hero03 } from "./components/hero-03";
 import { Hero04 } from "./components/hero-04";
 import { Hero05 } from "./components/hero-05";
-import { FeatureShowcase, type Feature } from "./components/feature-showcase";
+import { FeatureShowcase, type Feature } from "./components/feature-showcase-01";
 import { Testimonial01 } from "./components/testimonial-01";
 import { Testimonial04 } from "./components/testimonial-04";
 import { Testimonial05 } from "./components/testimonial-05";
@@ -41,7 +41,7 @@ export default function Landing() {
   return (
     <>
       <Header01 />
-      <Hero />
+      <Hero01 />
       <Hero02
         heading="Ship faster with less complexity"
         subtitle="One platform for your entire workflow. Replace disconnected tools with a single surface your whole team actually uses."
