@@ -98,6 +98,25 @@ Detailed patterns and conventions:
 - `.claude/rules/ui-guidelines.md` — OKLCH tokens, typography, semantic colors, visual philosophy
 - `.claude/rules/implementation-discipline.md` — build loop, verification, SPEC-GAP
 
+## CSS Architecture
+
+Three CSS files, each with one job. Loaded in order by `main.tsx`:
+
+| File | Owns | Change per theme? |
+|------|------|-------------------|
+| `index.css` | shadcn color token defaults (`--color-*`), radius, `@layer base` reset. The neutral baseline. | **No** — don't touch |
+| `base.css` | Landing page typography (`.landing` scoped heading sizes, line-height, letter-spacing). Constant across all style packs. | **No** — don't touch |
+| `style-pack.css` | Font families, font weights, and **color overrides**. Loads last so its `:root` values win over `index.css` defaults. | **Yes** — this is the theme file. Swap fonts + colors here to re-skin the starter |
+
+**To create a new theme:** copy the starter, edit only `style-pack.css` (colors, fonts, radius, weights) and update the font link in `index.html`. Everything else stays the same.
+
+```
+main.tsx import order:
+  1. index.css      ← shadcn defaults (lowest priority)
+  2. base.css       ← landing typography
+  3. style-pack.css ← theme overrides (highest priority, wins)
+```
+
 ## Design references
 
 - `docs/design/typography.md` — type scale, landing vs app/workspace usage
