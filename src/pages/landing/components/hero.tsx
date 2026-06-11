@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/base/button";
 import { TextRotator } from "./text-rotator";
 import { PartnerLogoGrid } from "./partner-logo-grid";
 import { heroWords, partnerLogos } from "@/data/landing";
 
 export function Hero() {
   return (
-    <section className="landing py-10">
+    <section className="landing py-24">
       <div className="mx-auto max-w-page px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <hgroup>
