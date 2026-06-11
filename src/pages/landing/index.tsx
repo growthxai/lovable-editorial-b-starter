@@ -1,7 +1,7 @@
 import { Header01 } from "./components/header";
 import { Hero01 } from "./components/hero-01";
+import { Hero02 } from "./components/hero-02";
 import { Hero03 } from "./components/hero-03";
-import { Hero04 } from "./components/hero-04";
 import { Features03 } from "./components/features-03";
 import { FeatureShowcase, type Feature } from "./components/feature-showcase-01";
 import { Testimonial01 } from "./components/testimonial-01";
@@ -41,7 +41,7 @@ export default function Landing() {
     <>
       <Header01 />
       <Hero01 />
-      <Hero03
+      <Hero02
         eyebrow="Trusted by 10,000+ teams worldwide"
         heading={
           <>
@@ -56,7 +56,7 @@ export default function Landing() {
         secondaryCta={{ label: "View demo", href: "/app" }}
         logos={partnerLogos}
       />
-      <Hero04
+      <Hero03
         heading="Deploy to the cloud with confidence"
         subtitle="One command to ship. Zero infrastructure to manage. Built for teams that move fast and break nothing."
         badge={{ label: "What's new", announcement: "Just shipped v1.0", href: "#" }}
