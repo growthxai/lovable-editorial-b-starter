@@ -6,10 +6,8 @@ components. Build into page folders, not from scratch.
 ## Core Principles
 
 - **Pages own their components** — every page is a folder with `index.tsx` + `components/`. Build here first. Extract to `components/` only on the 3rd use
-- **Three sacred folders** — `components/ui/` (shadcn), `components/base/` (design-system primitives), and `components/ai-elements/` (AI SDK) must not be modified. Use them, don't edit them
-- **`ui/` exception for forks** — after forking the base starter, a template MAY add custom button variants/sizes to `ui/button.tsx` if the template's UX requires it (e.g. `ghost-muted`, `sm-flush`). This is the ONLY sanctioned `ui/` modification. All other `ui/` files stay untouched
-- **`components/base/` generality test** — would another product use this component? Yes → base. No → page folder. Adding to base is a red flag
-- **Reuse before rebuild** — read the page's existing code before creating new files. Adapt what exists
+- **Two sacred folders** — `components/ui/` (shadcn) and `components/ai-elements/` (AI SDK) must not be modified. Use them, don't edit them. `components/base/` is where you wrap or extend `ui/` components (e.g. `base/button.tsx` wraps `ui/button.tsx` with `rounded-full`)
+- **Reuse or modify before creating new** — read the page's existing code before creating new files. Adapt what exists
 - **Real data, never placeholders** — verbatim strings from the spec. No lorem ipsum. Seed fixtures in `data/seed.ts`
 - **One screen at a time** — implement, `npm run build`, verify, commit. Don't batch multiple screens
 - **TypeScript strict** — no `any`, interfaces for props
@@ -41,7 +39,7 @@ src/
 │   ├── workspace-layout-03.tsx     # Standard sidebar + inset card + breadcrumbs
 │   └── workspace-layout-04.tsx     # Icon tab header + muted page bg
 ├── components/
-│   ├── base/                  # Sacred — generality test (typography, section, sidebar)
+│   ├── base/                  # Wrappers + extensions of ui/ (button, section, sidebar)
 │   ├── ai-elements/           # Sacred — AI SDK components (don't modify)
 │   └── ui/                    # Sacred — shadcn (don't modify, except button variants after fork)
 ├── data/                      # Seed fixtures (seed.ts)
@@ -66,7 +64,7 @@ Never skip levels. Never put domain components in `base/`.
 
 ## Don'ts
 
-1. Don't modify `components/ui/`, `components/base/`, or `components/ai-elements/` (see button exception above)
+1. Don't modify `components/ui/` or `components/ai-elements/`. Use `components/base/` to wrap/extend them
 2. Don't `npm install` packages — use `npx shadcn@latest add` for UI components
 3. Don't build raw HTML when shadcn has the component
 4. Don't use emojis as JSX content — use Tabler Icons (`@tabler/icons-react`)

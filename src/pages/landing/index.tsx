@@ -3,7 +3,7 @@ import { Hero01 } from "./components/hero-01";
 import { Hero02 } from "./components/hero-02";
 import { Hero03 } from "./components/hero-03";
 import { Hero04 } from "./components/hero-04";
-import { Hero05 } from "./components/hero-05";
+import { Features03 } from "./components/features-03";
 import { FeatureShowcase, type Feature } from "./components/feature-showcase-01";
 import { Testimonial01 } from "./components/testimonial-01";
 import { Testimonial04 } from "./components/testimonial-04";
@@ -84,7 +84,7 @@ export default function Landing() {
           </figure>
         }
       />
-      <Hero05
+      <Features03
         eyebrow="Everything you need"
         heading="No server? No problem."
         subtitle="Replace your patchwork of tools with a single platform that handles deployment, security, and scaling out of the box."

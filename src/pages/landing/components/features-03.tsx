@@ -14,7 +14,7 @@ interface FeatureItem {
   icon: ElementType;
 }
 
-interface Hero05Props {
+interface Features03Props {
   eyebrow: string;
   heading: string;
   subtitle: string;
@@ -55,13 +55,13 @@ const defaultFeatures: FeatureItem[] = [
   },
 ];
 
-export function Hero05({
+export function Features03({
   eyebrow,
   heading,
   subtitle,
   screenshot,
   features = defaultFeatures,
-}: Hero05Props) {
+}: Features03Props) {
   return (
     <section className="landing py-24">
       {/* Header */}
