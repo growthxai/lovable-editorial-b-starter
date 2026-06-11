@@ -1,6 +1,5 @@
 import { Header01 } from "./components/header";
 import { Hero01 } from "./components/hero-01";
-import { Hero02 } from "./components/hero-02";
 import { Hero03 } from "./components/hero-03";
 import { Hero04 } from "./components/hero-04";
 import { Features03 } from "./components/features-03";
@@ -42,11 +41,6 @@ export default function Landing() {
     <>
       <Header01 />
       <Hero01 />
-      <Hero02
-        heading="Ship faster with less complexity"
-        subtitle="One platform for your entire workflow. Replace disconnected tools with a single surface your whole team actually uses."
-        mockup={<AutomateMockup />}
-      />
       <Hero03
         eyebrow="Trusted by 10,000+ teams worldwide"
         heading={
