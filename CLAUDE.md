@@ -69,7 +69,7 @@ Never skip levels. Never put domain components in `base/`.
 1. Don't modify `components/ui/`, `components/base/`, or `components/ai-elements/` (see button exception above)
 2. Don't `npm install` packages — use `npx shadcn@latest add` for UI components
 3. Don't build raw HTML when shadcn has the component
-4. Don't use emojis as JSX content — use Lucide React icons
+4. Don't use emojis as JSX content — use Tabler Icons (`@tabler/icons-react`)
 5. Don't use hardcoded hex colors — use design tokens (`text-foreground`, `bg-primary`)
 6. Don't create new top-level `src/` folders
 7. Don't skip `npm run build` between screens
