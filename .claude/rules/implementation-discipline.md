@@ -8,7 +8,7 @@ paths:
 
 ## When implementing code changes
 
-- **Restate which screen you're implementing before each file change.** Example: "Screen 2 (Workspace) — building `pages/workspace/components/sidebar-nav.tsx`". If you can't name the screen, you don't know what you're doing yet.
+- **Restate which screen you're implementing before each file change.** Example: "Screen 2 (Dashboard) — building `pages/dashboard/components/ticket-queue.tsx`". If you can't name the screen, you don't know what you're doing yet.
 - **Do not expand scope.** Implement what the spec describes, not what you think would be cool.
 - **Do not refactor unrelated code.** If a file doesn't need to change for THIS screen, leave it untouched.
 - **Keep diffs minimal.** Smallest correct change. Don't reformat files, rename variables, or "improve" things outside the screen you're working on.
@@ -24,13 +24,15 @@ For each screen in the plan's Screen List, in order:
 
 Re-read the spec entries for THIS screen before writing any code:
 - **Screenboard** — the wireframe, section breakdowns, mock data, states
+- **Cloudboard** — query hooks, mutations, filter params, and auth flows for this screen's data
 - **Storyboard** — frames that start or end at this screen (transitions, copy)
 - **Breadboard** — arrows leaving this screen (navigation targets)
 
 ### 2. Build
 
 - Build components in `pages/<screen>/components/` — not in the page file
-- Use real data from `data/seed.ts` — verbatim strings from the spec
+- Wire data through the DataProvider hooks from the cloudboard — never import `data/seed.ts` directly in page components
+- Use real data from `data/seed.ts` for the SeedDataProvider — verbatim strings from the spec
 - Import from `components/base/`, `components/ui/`, `components/ai-elements/` as needed — don't modify them
 
 ### 3. Verify
@@ -48,6 +50,12 @@ Check this screen against its screenboard entry:
 - Are there extra elements NOT in the wireframe? Remove them.
 - Does the copy match the storyboard's "Copy in this frame" entries?
 - Do navigation arrows from the breadboard work? (click trigger → correct destination)
+
+Check this screen against its cloudboard entry:
+- Does every data section use a hook from the DataProvider, not a direct seed.ts import?
+- Does every hook accept the filter params listed in the cloudboard?
+- Are mutations wired (create, update, delete) where the cloudboard specifies them?
+- Is the auth gate correct? (protected route vs public demo route)
 
 ### 5. Fix
 
