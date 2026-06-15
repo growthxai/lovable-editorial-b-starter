@@ -91,6 +91,22 @@ Only commit once QA passes (or after 3 fix cycles with gaps documented).
 
 ---
 
+## Auth is a screen, not a SPEC-GAP
+
+Sign-in and sign-up are in the Screen List. They get the same per-screen loop as every other screen: read the cloudboard Auth section → build `AuthProvider`, `ProtectedRoute`, sign-in page with real `supabase.auth.signInWithOAuth` / `signInWithPassword`, sign-up page with real `supabase.auth.signUp` → verify build → QA → commit.
+
+**Do NOT simulate auth.** Do not use `setTimeout(() => navigate('/goals'), 800)`. Do not show toasts saying "not configured." The Supabase client exists at `@/integrations/supabase/client` — import it and call the real auth methods. The providers (Google, Apple, Email) are pre-configured on the Lovable Cloud project.
+
+Auth infrastructure to build:
+- `src/lib/auth/auth-provider.tsx` — wraps the app, exposes `{ user, session, loading, signOut }`, registers `onAuthStateChange` before `getSession()`
+- `src/components/protected-route.tsx` — redirects to `/sign-in` when `!user && !loading`, preserves `from` in location state
+- Wrap `/*` app routes (not `/demo/*`) in `ProtectedRoute` in `App.tsx`
+- Sidebar footer: sign-out button calls `supabase.auth.signOut()` + clears React Query cache
+
+Commit: `feat(auth): implement auth per cloudboard`
+
+---
+
 ## After all screens — Verification Report
 
 Write `docs/plans/VERIFICATION.md` with this structure:
@@ -154,6 +170,7 @@ git commit -m "docs: implementation map for <Template>"
 git commit -m "feat(landing): implement Landing per spec"
 git commit -m "feat(dashboard): implement Dashboard per spec"
 git commit -m "feat(chat): implement Chat per spec"
+git commit -m "feat(auth): implement auth per cloudboard"
 
 # After all screens:
 git commit -m "docs: verification report for <Template>"
@@ -176,3 +193,4 @@ git commit -m "feat: implement <Template> per spec"
 6. ❌ Claiming all ACs PASS without evidence. ✅ Mark NOT PROVEN honestly
 7. ❌ Stopping mid-build to ask a question. ✅ SPEC-GAP comment, sensible default, move on
 8. ❌ Reading the spec once at the start and forgetting by screen 3. ✅ Re-read per screen
+9. ❌ Marking auth as SPEC-GAP and simulating with setTimeout/toast. ✅ Import `supabase` from `@/integrations/supabase/client` and call real auth methods
