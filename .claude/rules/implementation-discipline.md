@@ -31,8 +31,7 @@ Re-read the spec entries for THIS screen before writing any code:
 ### 2. Build
 
 - Build components in `pages/<screen>/components/` — not in the page file
-- Wire data through the DataProvider hooks from the cloudboard — never import `data/seed.ts` directly in page components
-- Use real data from `data/seed.ts` for the SeedDataProvider — verbatim strings from the spec
+- **Every component that renders data calls a DataProvider hook.** Pages AND child components. If `GoalsTable` needs a teams list for a popover, it calls `useTeams()` — it does NOT import from `data/seed.ts`. The only file that imports `data/seed.ts` is `lib/data-provider.tsx` itself.
 - Import from `components/base/`, `components/ui/`, `components/ai-elements/` as needed — don't modify them
 
 ### 3. Verify
