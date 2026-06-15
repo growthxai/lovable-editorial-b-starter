@@ -53,6 +53,7 @@ Check this screen against its screenboard entry:
 Check this screen against its cloudboard entry:
 - Does every data section use a hook from the DataProvider, not a direct seed.ts import?
 - Does every hook accept the filter params listed in the cloudboard?
+- Does the SeedDataProvider actually filter the seed array when filters change? If a hook takes `(filters)`, the SeedDataProvider must filter/sort the seed data — not ignore the param with `_filters` and return the full array. Change a filter in the UI and verify the data updates.
 - Are mutations wired (create, update, delete) where the cloudboard specifies them?
 - Is the auth gate correct? (protected route vs public demo route)
 
@@ -194,3 +195,4 @@ git commit -m "feat: implement <Template> per spec"
 7. ❌ Stopping mid-build to ask a question. ✅ SPEC-GAP comment, sensible default, move on
 8. ❌ Reading the spec once at the start and forgetting by screen 3. ✅ Re-read per screen
 9. ❌ Marking auth as SPEC-GAP and simulating with setTimeout/toast. ✅ Import `supabase` from `@/integrations/supabase/client` and call real auth methods
+10. ❌ SeedDataProvider ignoring filters: `(_filters) => ok(seed.data)`. ✅ Filter the seed array: `(filters) => ok(seed.data.filter(d => d.date >= filters.startDate))`
