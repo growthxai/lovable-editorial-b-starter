@@ -23,10 +23,11 @@ For each screen in the plan's Screen List, in order:
 ### 1. Read
 
 Re-read the spec entries for THIS screen before writing any code:
-- **Screenboard** — the wireframe, section breakdowns, mock data, states
-- **Cloudboard** — query hooks, mutations, filter params, and auth flows for this screen's data
-- **Storyboard** — frames that start or end at this screen (transitions, copy)
-- **Breadboard** — arrows leaving this screen (navigation targets)
+- **Screenboard** (`docs/plans/00-screenboard.md`) — the wireframe, section breakdowns, Data Operations table
+- **Cloudboard** (`docs/plans/00-cloudboard.md`) — query hooks, mutations, filter params, seed filter manifest
+- **Storyboard** (`docs/plans/00-storyboard.md`) — frames that start or end at this screen (transitions, copy)
+- **Breadboard** (`docs/plans/00-breadboard.md`) — arrows leaving this screen (navigation targets)
+- **Design patterns** (`docs/design/`) — read the pattern doc for each data operation this screen uses (e.g. `filters.md` if the screen has filters, `crud.md` if it has create/edit/delete)
 
 ### 2. Build
 
