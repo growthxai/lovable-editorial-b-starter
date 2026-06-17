@@ -116,13 +116,24 @@ function ProtectedRoute({ children }: { children: ReactNode }) {
 └──────────────────────────────────────────┘
 ```
 
-**OAuth buttons**:
+**OAuth buttons** (use Lovable managed client, NOT supabase.auth):
 ```typescript
-const handleOAuth = (provider: 'google' | 'apple') => {
-  supabase.auth.signInWithOAuth({
-    provider,
-    options: { redirectTo: `${window.location.origin}/goals` },
+import { lovable } from "@/integrations/lovable/index";
+
+const handleOAuth = async (provider: 'google' | 'apple') => {
+  const result = await lovable.auth.signInWithOAuth(provider, {
+    redirect_uri: window.location.origin,
   });
+  if (result.error) {
+    setError('OAuth sign-in failed');
+    return;
+  }
+  if (result.redirected) {
+    return; // browser navigating to provider — just wait
+  }
+  // session is set, navigate to app
+  const from = location.state?.from?.pathname || '/goals';
+  navigate(from, { replace: true });
 };
 ```
 
@@ -214,6 +225,11 @@ function SidebarFooter() {
 ## Anti-patterns
 
 ```typescript
+// ❌ Direct supabase OAuth — "missing OAuth secret" error
+supabase.auth.signInWithOAuth({ provider: 'google' }); // bypasses Lovable broker
+// ✅ Use Lovable managed client instead:
+lovable.auth.signInWithOAuth('google', { redirect_uri: window.location.origin });
+
 // ❌ Simulated auth
 setTimeout(() => navigate('/goals'), 800); // not real auth
 
