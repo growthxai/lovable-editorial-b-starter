@@ -4,9 +4,9 @@
 
 Pipeline outputs and implementation artifacts. One set per template build:
 
-- `00-breadboard.md` — product scope, screen list, breadboard, decisions
-- `00-screenboard.md` — wireframes, component breakdowns, mock data per screen
-- `00-storyboard.md` — transitions between screens, frames, copy decisions
+- `01-breadboard.md` — product scope, screen list, breadboard, decisions
+- `02-screenboard.md` — wireframes, component breakdowns, mock data per screen
+- `04-storyboard.md` — transitions between screens, frames, copy decisions
 - `implementation-map.md` — screen → component mapping (written before code)
 - `verification.md` — post-build audit trail (files changed, ACs, SPEC-GAPs)
 
