@@ -3,10 +3,12 @@
 **Philosophy:** Adapt the starter to a new template spec by reusing existing
 components. Build into page folders, not from scratch.
 
+**Design system:** This is the **Editorial** starter. Read `docs/design/design-language.md` before writing ANY UI code. Key rules: sharp rectangles (no border-radius), `border-foreground` as the primary visual tool, 11px uppercase labels, magenta accent for hover fills, staggered `animate-fade-in` entry. Do NOT apply base-starter patterns (rounded-full pills, subtle gray borders, Figtree font).
+
 ## Core Principles
 
 - **Pages own their components** — every page is a folder with `index.tsx` + `components/`. Build here first. Extract to `components/` only on the 3rd use
-- **Two sacred folders** — `components/ui/` (shadcn) and `components/ai-elements/` (AI SDK) must not be modified. Use them, don't edit them. `components/base/` is where you wrap or extend `ui/` components (e.g. `base/button.tsx` wraps `ui/button.tsx` with `rounded-full`)
+- **Two sacred folders** — `components/ui/` (shadcn) and `components/ai-elements/` (AI SDK) must not be modified. Use them, don't edit them. `components/base/` is where you wrap or extend `ui/` components (e.g. `base/button.tsx` wraps `ui/button.tsx` with `rounded-none`)
 - **Reuse or modify before creating new** — read the page's existing code before creating new files. Adapt what exists
 - **Real data, never placeholders** — verbatim strings from the spec. No lorem ipsum. Seed fixtures in `data/seed.ts`
 - **One screen at a time** — implement, `npm run build`, verify, commit. Don't batch multiple screens
@@ -36,8 +38,7 @@ src/
 │   ├── application-layout.tsx      # Fullscreen — no chrome (landing, auth, onboarding)
 │   ├── workspace-layout-01.tsx     # Peekable sidebar
 │   ├── workspace-layout-02.tsx     # Top-bar (pill tabs) + inset sheet
-│   ├── workspace-layout-03.tsx     # Standard sidebar + inset card + breadcrumbs
-│   └── workspace-layout-04.tsx     # Icon tab header + muted page bg
+│   └── workspace-layout-03.tsx     # Standard sidebar + inset card + breadcrumbs
 ├── components/
 │   ├── base/                  # Wrappers + extensions of ui/ (button, section, sidebar)
 │   ├── ai-elements/           # Sacred — AI SDK components (don't modify)
@@ -120,4 +121,5 @@ main.tsx import order:
 
 ## Design references
 
+- `docs/design/design-language.md` — **START HERE** — full editorial design language (borders, typography, components, animations, anti-patterns)
 - `docs/design/typography.md` — type scale, landing vs app/workspace usage
