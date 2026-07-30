@@ -2,12 +2,12 @@ import { IconChevronsLeft } from "@tabler/icons-react";
 import {
   Sidebar,
   SidebarContent,
-  SidebarFooter,
   SidebarHeader,
   SidebarMenuButton,
   useShadcnSidebar,
   usePeekable,
 } from "@/components/base/sidebar";
+import { SidebarAccountFooter } from "@/components/base/sidebar-account-footer";
 
 export function PeekPaneBody() {
   const { state, actions } = usePeekable();
@@ -38,7 +38,7 @@ export function PeekPaneBody() {
         </div>
       </SidebarHeader>
       <SidebarContent />
-      <SidebarFooter />
+      <SidebarAccountFooter />
     </>
   );
 }
