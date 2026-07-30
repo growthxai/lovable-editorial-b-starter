@@ -72,6 +72,7 @@ Never skip levels. Never put domain components in `base/`.
 5. Don't use hardcoded hex colors — use design tokens (`text-foreground`, `bg-primary`)
 6. Don't create new top-level `src/` folders
 7. Don't skip `npm run build` between screens
+8. Don't build a sidebar footer / "Sign out" button — the footer is provided by `SidebarAccountFooter` (`components/base/`), already wired in the workspace `app-sidebar`. It renders "Sign out" on authenticated routes and "Exit demo" on `/demo/*`. Pass the account display via its `account` prop; never hand-roll a logout in a demo shell
 
 ---
 

@@ -152,7 +152,10 @@ Every action has a cost. Match visual weight to importance.
 ### Sidebar
 
 - **All navigation items live in the sidebar body** — pages, sections, workflows
-- **Sidebar footer is reserved for settings and misc** — user profile, preferences, logout
+- **Sidebar footer holds settings/misc and the account row.** The account row + the
+  leave affordance are provided by `SidebarAccountFooter` (`components/base/`) — do not
+  rebuild them in page scope. It renders "Sign out" on authenticated routes and
+  "Exit demo" on `/demo/*` (demo has no session to end), driven by `useIsDemo()`.
 - Inactive items are monochromatic (`text-muted-foreground` icon + label)
 - Active/selected item gets primary color (`text-primary` icon + label) with a subtle `bg-primary/10` background
 - Sidebar border: `border-r-hairline`

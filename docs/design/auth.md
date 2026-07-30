@@ -180,32 +180,25 @@ if (error) {
 
 ---
 
-## Sign out
+## Sidebar footer — sign out / exit demo
 
-In the sidebar footer. Calls `signOut()` from AuthProvider.
+The footer's leave affordance is **provided by the base**: `<SidebarAccountFooter />`
+(`components/base/sidebar-account-footer.tsx`), already wired into the workspace
+`app-sidebar`. It is route-aware and is the ONE place that decides the affordance —
+do not rebuild it in page scope:
 
-```typescript
-function SidebarFooter() {
-  const { user, signOut } = useAuth();
+- **Authenticated `/*`** → "Sign out", calls `signOut()` from AuthProvider.
+- **Public `/demo/*`** → "Exit demo", navigates to `EXIT_DEMO_ROUTE` (`/`). Demo has no
+  session, so "Sign out" would be meaningless there. The choice is driven by
+  `useIsDemo()` (`lib/demo.ts`) — never re-branch on the route yourself.
 
-  return (
-    <SidebarFooterContent>
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button variant="ghost" className="w-full justify-start">
-            <Avatar><AvatarFallback>{initials}</AvatarFallback></Avatar>
-            <span>{user?.email}</span>
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent>
-          <DropdownMenuItem onClick={signOut}>
-            <LogOut /> Sign out
-          </DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
-    </SidebarFooterContent>
-  );
-}
+Layout: separator → leave affordance → account row. Account display varies per template,
+so pass it via the `account` prop; it renders below the leave affordance.
+
+```tsx
+// Already wired in app-sidebar. Pass the template's own account display (avatar + name)
+// as `account` when you have one; omit it for a leave-affordance-only footer.
+<SidebarAccountFooter account={/* e.g. your account menu component */} />
 ```
 
 ---
